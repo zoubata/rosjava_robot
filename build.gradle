@@ -1,0 +1,69 @@
+/*
+ * Copyright (C) 2014 pvalleau.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+/* This plugin is necessary for creating installDist tasks (i.e. executables) */
+apply plugin: 'application'
+mainClassName = 'org.ros.RosRun'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+//sourceCompatibility = 1.6
+//targetCompatibility = 1.6
+
+
+/*
+ Examples of
+   1) dependencies from another project in this gradle stack.
+   2,3) open ranged dependencies from a maven repository.
+
+   Dependencies can be on external maven artifacts (such as rosjava_core
+   here) or on sibling subprojects. For rosjava maven artifact dependencies
+   it is a good idea to use open ranges on to
+   save continually updating these references, but it is recommended
+   to restrict this to the patch version number (e.g. [0.3,0.4) will
+   get the latest 0.3.x version) to avoid unknowingly
+   having api breaking changes usually associated with minor and major
+   version number changes.
+*/
+// we need this for maven installation
+version = '0.0.0-SNAPSHOT'
+group = 'ros.my_stack'
+
+//
+dependencies {
+  /* An external maven artifact dependency */
+  compile 'org.ros.rosjava_core:rosjava:[0.3,0.4)'
+  /* Example of a local subproject dependency */
+  /* compile project(':sibling_gradle_project') */
+
+ compile 'org.ros.android_core:android_core_components:[0.4,0.5)'
+   compile 'org.ros.rosjava_messages:diagnostic_msgs:[1.12, 1.13)'
+   compile 'org.ros.rosjava_messages:std_msgs:[0.5,0.6)'
+//  compile project(':common_tools')
+ compile 'org.ros.rosjava_messages:geometry_msgs:1.10.+'
+  compile 'org.ros.rosjava_messages:nav_msgs:1.10.+'
+  compile 'org.ros.rosjava_messages:tf2_msgs:0.4.+'
+ compile 'org.ros.rosjava_messages:sensor_msgs:1.+'
+compile 'org.ros.rosjava_messages:actionlib_msgs:1.+'
+
+  compile 'ros.rosjava_core:rosjava_bootstrap:[0.4,0.5)'
+  compile 'ros.rosjava_core:rosjava_geometry:0.+'
+ compile 'org.ros.rosjava_bootstrap:message_generation:[0.3,0.4)'
+
+}
+
