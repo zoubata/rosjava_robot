@@ -31,7 +31,7 @@ public class Listener extends AbstractNodeMain {
 
   @Override
   public GraphName getDefaultNodeName() {
-    return GraphName.of("rosjava/teleop");
+    return GraphName.of("rosjava/listener");
   }
   @Override
   public void onStart(ConnectedNode connectedNode) {

@@ -40,7 +40,6 @@ public class JoyPublisher extends AbstractNodeMain {
 public IJoyMsgUpdater getJoy() {
 	return joy;
 }
-
 /**
  * @param joy the joy to set
  * setJoy(new JoyPS4)

@@ -1,3 +1,6 @@
-[submodule "jar"]
-	path = jar
+[submodule "src/zoubworld/utils/java_utilities/com/zoubworld"]
+	path = src/zoubworld/utils/com/zoubworld
+	url = git@github.com:zoubata/java_utilities.git
+[submodule "lib"]
+	path = lib
 	url = git@github.com:zoubata/java_lib.git

@@ -149,7 +149,9 @@ if(currState.isConnected)
 		axes[AXIS_ACCELEROMETER_LEFT]=(float) 0.0;
 		axes[AXIS_ACCELEROMETER_FORWARD]=(float) 0.0;
 		axes[AXIS_ACCELEROMETER_UP]=(float) 0.0;
-	
+		
+		for(int i=0;i<axes.length;i++)//remove zero not well done
+		axes[i]=Math.abs(axes[i])>0.05?axes[i]:0;
 	}
 	else
 		for(int i=0;i<buttons.length;i++)
